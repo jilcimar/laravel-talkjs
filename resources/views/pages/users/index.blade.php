@@ -2,10 +2,6 @@
 
 @section('title', 'Contatos')
 
-@section('content_header')
-    <h1>Contatos</h1>
-@stop
-
 @section('content')
     <div class="row">
         <div class="col-sm-12">
@@ -14,30 +10,46 @@
                     <h3 class="box-title">Contatos registrados no sistema</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                    <thead>
-                                    <tr>
-                                        <th class="col-md-3">Nome</th>
-                                        <th class="col-md-2">E-mail</th>
-                                        <th class="col-md-3">Criado em</th>
-                                        <th class="col-md-2">Opções</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @forelse($users as $user)
-                                        <tr>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at->format('d/m/Y H:i')}}</td>
-                                            <td>
-                                                <div class="btn-group">
+                    <div class="card card-solid">
+                        <div class="card-body pb-0">
+                            <div class="row d-flex align-items-stretch">
+                                @forelse($users as $user)
+                                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                                        <div class="card bg-light">
+                                            <div class="card-header text-muted border-bottom-0">
+                                                Usuário do sistema
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="lead"><b>{{ $user->name }}</b></h2>
+                                                        <p class="text-muted text-sm"><b>Email: </b>
+                                                            {{ $user->email }}  </p>
+                                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                            <li class="small">
+                                                                <span class="fa-li">
+                                                                    <i class="fas fa-lg fa-calendar-alt"></i>
+                                                                </span>Registrado em: {{ $user->created_at->format('d/m/Y')}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                        <img src="{{asset('vendor/adminlte/dist/img/user.png')}}"
+                                                             alt=""
+                                                             class="img-circle img-fluid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="text-right">
                                                     <a class="btn btn-warning" title="Editar"
                                                        href="{{route('users.edit', $user->id)}}">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
+{{--                                                    <a href="#" class="btn btn-sm btn-primary">--}}
+{{--                                                        <i class="fas fa-user"></i> View Profile--}}
+{{--                                                    </a>--}}
+
                                                     @if(\auth()->user()->id != $user->id)
                                                         <a class="btn btn-danger destroy-user" title="Apagar"
                                                            href="#" data-user-id="{{$user->id}}">
@@ -51,19 +63,12 @@
                                                         </form>
                                                     @endif
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="5" style="text-align: center">O sistema não possui users
-                                                registrados.
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center">
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                    O sistema não possui contatos registrados.
+                                @endforelse
                             </div>
                         </div>
                     </div>
