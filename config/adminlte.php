@@ -231,23 +231,26 @@ return [
     */
 
     'menu' => [
+        ['header' => 'main_navigation'],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Adicionar Contato',
+            'url'  => 'users/create',
+            'icon' => 'fas fa-fw fa-user-plus',
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Lista de contatos',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-list-ul',
+        ],
+        [
+            'text' => 'Chat',
+            'url'  => 'chat',
+            'icon' => 'fas fa-fw fa-comment',
         ],
     ],
 

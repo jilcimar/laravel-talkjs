@@ -37,6 +37,8 @@
 
             {{-- Content Header --}}
             <div class="content-header">
+                @include('vendor.adminlte.partials.common.system-alerts')
+
                 <div class="{{ config('adminlte.classes_content_header') ?: $def_container_class }}">
                     @yield('content_header')
                 </div>
@@ -65,6 +67,16 @@
 @stop
 
 @section('adminlte_js')
+    <!-- minified snippet to load TalkJS without delaying your page -->
+    <script>
+        (function(t,a,l,k,j,s){
+            s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+            ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+                        .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     @stack('js')
     @yield('js')
 @stop

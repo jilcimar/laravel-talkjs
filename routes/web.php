@@ -21,6 +21,14 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('users', 'UserController');
+    
+    /*
+     |--------------------------------------------------------------------------
+     | Chat Routes
+     |--------------------------------------------------------------------------
+    */
+    Route::get('/chat', 'ChatController@index');
 });
 
 
