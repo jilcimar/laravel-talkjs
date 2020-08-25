@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(UserRepository $userRepository)
     {
-        return view('home');
+        $countUsers  = $userRepository->countUsers();
+        return view('home', compact('countUsers'));
     }
 }

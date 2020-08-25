@@ -7,37 +7,22 @@
 @stop
 
 @section('content')
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="row">
-        <div class="col-md-4">
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Todos os Contatos</h3>
-                    <div class="box-tools">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Contatos do sistema</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                         </button>
                     </div>
                 </div>
-                <div class="box-body no-padding">
-                    <ul class="nav nav-pills nav-stacked">
+                <div class="card-body p-0">
+                    <ul class="nav nav-pills flex-column">
                         @forelse($users as $user)
-                            <li class="item-user" data-user="{{$user->id}}">
-                                <a href="#">
-                                    <i class="fa fa-user"></i> {{$user->name}} - ({{$user->email}})
-                                    <span class="label label-warning pull-right"></span>
+                            <li class="nav-item item-user" data-user="{{$user->id}}">
+                                <a href="#" class="nav-link">
+                                    {{$user->name}} - ({{$user->email}})
                                 </a>
                             </li>
                         @empty
@@ -46,15 +31,15 @@
 
                     </ul>
                 </div>
-                <!-- /.box-body -->
+                <!-- /.card-body -->
             </div>
         </div>
         <!-- /.col -->
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div id="talkjs-container" style="width: 100%; height: 500px;"></div>
         </div>
-        <!-- /.col -->
     </div>
+
 @stop
 
 @section('js')

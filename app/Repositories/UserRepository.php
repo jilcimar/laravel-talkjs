@@ -31,7 +31,12 @@ class  UserRepository extends AbstractRepository
             "id" => (string) $user->id,
             "name" => $user->name,
             "email" => $user->email,
-            "photoUrl" => "https://i.ibb.co/cYDxzms/photo.png",
+            "photoUrl" => "https://raw.githubusercontent.com/jilcimar/laravel-talkjs/master/public/vendor/adminlte/dist/img/user.png",
         ];
+    }
+    
+    public function countUsers()
+    {
+        return count($this->model->all());
     }
 }
